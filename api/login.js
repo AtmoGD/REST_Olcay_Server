@@ -1,21 +1,13 @@
 const fs = require("fs");
 const path = require("path");
 
+import data from "./users.json";
+
 // Path to the JSON file
 const DATA_FILE = path.resolve(process.cwd(), "./users.json");
 
-// Load data from JSON file
-function loadData() {
-  try {
-    return require(DATA_FILE);
-  } catch (error) {
-    console.error("Error reading data file:", error);
-    return {};
-  }
-}
-
 // Save data to JSON file
-function saveData(data) {
+function saveData() {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 4));
   } catch (error) {
@@ -30,7 +22,6 @@ module.exports = async (req, res) => {
     return res.status(400).json({ success: false, description: "Invalid input" });
   }
 
-  const data = loadData();
   const user = data[username];
 
   if (user && user.password === password) {
@@ -50,7 +41,7 @@ module.exports = async (req, res) => {
 
     // Register the new device
     devices.push(device_id);
-    saveData(data);
+    saveData();
     return res.status(200).json({ success: true });
   } else {
     return res.status(401).json({ success: false, description: "Invalid credentials" });
