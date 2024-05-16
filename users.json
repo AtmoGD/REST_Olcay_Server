@@ -1,0 +1,6 @@
+{
+  "john_doe": {
+    "password": "securepassword",
+    "devices": ["device123", "device124"]
+  }
+}
