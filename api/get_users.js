@@ -1,7 +1,7 @@
 const fs = require("fs");
 
 // Path to the JSON file
-const DATA_FILE = "./users.json";
+const DATA_FILE = "./api/users.json";
 
 // Load data from JSON file
 function loadData() {
