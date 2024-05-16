@@ -1,19 +1,4 @@
-const fs = require("fs");
-const path = require("path");
-
 import data from "./users.json";
-
-// Path to the JSON file
-const DATA_FILE = path.resolve(process.cwd(), "./users.json");
-
-// Save data to JSON file
-function saveData(data) {
-  try {
-    fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 4));
-  } catch (error) {
-    console.error("Error writing data file:", error);
-  }
-}
 
 module.exports = async (req, res) => {
   let { username, password, device_id } = req.body;
