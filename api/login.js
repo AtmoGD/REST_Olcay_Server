@@ -39,9 +39,6 @@ module.exports = async (req, res) => {
         .json({ success: false, description: "License limit reached" });
     }
 
-    // Register the new device
-    devices.push(device_id);
-    saveData();
     return res.status(200).json({ success: true });
   } else {
     return res.status(401).json({ success: false, description: "Invalid credentials" });
