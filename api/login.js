@@ -7,7 +7,7 @@ import data from "./users.json";
 const DATA_FILE = path.resolve(process.cwd(), "./users.json");
 
 // Save data to JSON file
-function saveData() {
+function saveData(data) {
   try {
     fs.writeFileSync(DATA_FILE, JSON.stringify(data, null, 4));
   } catch (error) {
@@ -16,7 +16,14 @@ function saveData() {
 }
 
 module.exports = async (req, res) => {
-  const { username, password, device_id } = req.query;
+  let { username, password, device_id } = req.body;
+
+  if (req.method === "GET") {
+    // Handle GET requests
+    username = req.query.username;
+    password = req.query.password;
+    device_id = req.query.device_id;
+  }
 
   if (!username || !password || !device_id) {
     return res.status(400).json({ success: false, description: "Invalid input" });
