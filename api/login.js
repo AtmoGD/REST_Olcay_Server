@@ -7,8 +7,7 @@ const DATA_FILE = path.resolve(process.cwd(), "./users.json");
 // Load data from JSON file
 function loadData() {
   try {
-    const data = fs.readFileSync(DATA_FILE);
-    return JSON.parse(data);
+    return require(DATA_FILE);
   } catch (error) {
     console.error("Error reading data file:", error);
     return {};
