@@ -15,8 +15,8 @@ module.exports = async (req, res) => {
 
   if (!username || !password || !device_id) {
     return res.status(400).json({
-      success: false,
-      description: "Invalid input",
+      "success": false,
+      "description": "Invalid input",
       user: !username ? "No User" : username,
       pass: !password ? "No Password" : username,
       device: !device_id ? "No Device ID" : device_id,
