@@ -1,7 +1,8 @@
 const fs = require("fs");
+const path = require("path");
 
 // Path to the JSON file
-const DATA_FILE = "./users.json";
+const DATA_FILE = path.resolve(process.cwd(), "./users.json");
 
 // Load data from JSON file
 function loadData() {
