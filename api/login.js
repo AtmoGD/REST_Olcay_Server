@@ -15,9 +15,9 @@ module.exports = async (req, res) => {
     return res.status(400).json({
       success: false,
       description: "Invalid input",
-      username: username,
-      password: password,
-      device_id: device_id,
+      user: username,
+      pass: password,
+      device: device_id,
     });
   }
 
