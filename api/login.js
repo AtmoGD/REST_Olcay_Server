@@ -1,6 +1,7 @@
 import data from "./users.json";
 
 module.exports = async (req, res) => {
+  res.setHeader("Access-Control-Allow-Origin", "*");
   let { username, password, device_id } = req.body;
 
   if (req.method === "GET") {
