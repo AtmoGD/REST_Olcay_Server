@@ -12,7 +12,13 @@ module.exports = async (req, res) => {
   }
 
   if (!username || !password || !device_id) {
-    return res.status(400).json({ success: false, description: "Invalid input" });
+    return res.status(400).json({
+      success: false,
+      description: "Invalid input",
+      username: username,
+      password: password,
+      device_id: device_id,
+    });
   }
 
   const user = data[username];
@@ -34,6 +40,6 @@ module.exports = async (req, res) => {
 
     return res.status(200).json({ success: true });
   } else {
-    return res.status(401).json({ success: false, description: "Invalid credentials" });
+    return res.status(401).json({ success: false, description: "Invalid password" });
   }
 };
